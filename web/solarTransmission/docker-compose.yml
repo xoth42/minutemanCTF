@@ -1,0 +1,12 @@
+services:
+  backend:
+    build: app
+    ports:
+      - 4040:3000
+    environment:
+      REDIS_URL: redis://cache-storage:6379
+      REDIS_HOST: cache-storage
+      FLAG: MINUTEMAN{TEST_FLAG}
+  cache-storage:
+    image: redis:latest
+    restart: always
